@@ -26,11 +26,9 @@ class Life
   end
 
   def newborns
-    result = []
-    coordinates_of_dead_cells.each do |x,y|
-      result << OpenStruct.new(x: x, y: y)
+    coordinates_of_dead_cells.map do |x,y|
+      OpenStruct.new(x: x, y: y)
     end
-    return result
   end
 
   def neighbors(cell)
