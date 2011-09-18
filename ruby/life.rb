@@ -17,7 +17,7 @@ class Life
   end
 
   def tick!
-    @cells = []
+    @cells = survivors
   end
 
   private
