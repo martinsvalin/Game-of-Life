@@ -141,6 +141,14 @@ describe "private methods" do
     it "has the same count as cells" do
       subject.send(:coordinates_of_living_cells).count.should == subject.cells.count
     end
+
+    it "has the coordinates of living cells" do
+      coordinates = subject.send(:coordinates_of_living_cells)
+      coordinates.should include [0,0]
+      coordinates.should include [1,0]
+      coordinates.should include [2,0]
+      coordinates.should include [10,0]
+    end
   end
 
   describe "#all_coordinates" do
