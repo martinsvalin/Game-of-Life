@@ -131,6 +131,10 @@ describe "private methods" do
     it "finds a dead cell at -1,-1" do
       subject.send(:coordinates_of_dead_cells).should include [-1,-1]
     end
+
+    it "does not find the live cell at 0,0" do
+      subject.send(:coordinates_of_dead_cells).should_not include [0,0]
+    end
   end
 
   describe "#all_coordinates" do
