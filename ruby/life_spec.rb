@@ -63,6 +63,12 @@ describe "private methods" do
     it "does not find 0,0 as a neighbor to itself" do
       subject.send(:neighbors, @center_cell).should_not have_cell_at 0,0
     end
+
+    it "only finds neighbors that are in the neighborhood of 0,0" do
+      subject.add_cell 10,0
+      neighborhood = subject.send(:neighborhood, @center_cell)
+      subject.send(:neighbors, @center_cell).should be_all {|cell| neighborhood.include? cell }
+    end
   end
   describe "#neighborhood" do
     it "finds 0,0 and 1,0 in the neighborhood of 0,0" do
