@@ -70,7 +70,7 @@ describe "private methods" do
       subject.send(:neighborhood, @center_cell).should have_cell_at 1,0
     end
 
-    it "does not find 10,0 in the neighboorhood of 0,0" do
+    it "does not find 10,0 in the neighborhood of 0,0" do
       subject.add_cell 10,0
       subject.send(:neighborhood, @center_cell).should_not have_cell_at 10,0
     end
