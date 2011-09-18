@@ -30,6 +30,13 @@ describe "Any live cell with fewer than two live neighbours dies, as if caused b
       subject.cells.should be_empty
     end
   end
+
+  describe "A game with three live cells in a row, at 0,0; 1,0 and 2,0" do
+    subject { Life.new }
+    before { subject.add_cell 0,0 }
+    before { subject.add_cell 1,0 }
+    before { subject.add_cell 2,0 }
+  end
 end
 
 describe "Any live cell with two or three live neighbours lives on to the next generation."
