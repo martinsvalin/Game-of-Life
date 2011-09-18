@@ -42,6 +42,30 @@ describe "Any live cell with two or three live neighbours lives on to the next g
 describe "Any live cell with more than three live neighbours dies, as if by overcrowding."
 describe "Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction."
 
+describe "private methods" do
+  subject { Life.new }
+  describe "#survivors" do
+    it "finds 1,0 as a survivor from 0,0; 1,0 and 2,0" do
+      pending
+    end
+  end
+  describe "#neighbors" do
+    it "finds 1,0 as a neighbor to 0,0" do
+      pending
+    end
+  end
+  describe "#neighborhood" do
+    before do
+      subject.add_cells [0,0], [1,0]
+    end
+    it "finds 0,0 and 1,0 in the neighborhood of 0,0" do
+      cells = subject.cells
+      cells.first.should be_at 0,0
+      subject.send(:neighborhood, cells.first).should == cells
+    end
+  end
+end
+
 RSpec::Matchers.define :be_at do |x, y|
   match do |cell|
     cell.x == x and cell.y == y
