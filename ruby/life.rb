@@ -25,6 +25,14 @@ class Life
     cells.select {|cell| (2..3).include? neighbors(cell).count }
   end
 
+  def newborns
+    result = []
+    coordinates_of_dead_cells.each do |x,y|
+      result << OpenStruct.new(x: x, y: y)
+    end
+    return result
+  end
+
   def neighbors(cell)
     neighborhood(cell) - [cell]
   end
