@@ -31,6 +31,10 @@ describe "Any live cell with fewer than two live neighbours dies, as if caused b
 
   describe "A game with three live cells in a row, at 0,0; 1,0 and 2,0" do
     before { subject.add_cells [0,0], [1,0], [2,0] }
+    it "has one survivor after one tick at 1,0" do
+      subject.tick!
+      subject.cells.map{|cell| [cell.x, cell.y] }.should include([1,0])
+    end
   end
 end
 
