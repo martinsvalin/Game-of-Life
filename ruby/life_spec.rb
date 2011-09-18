@@ -125,7 +125,7 @@ describe "private methods" do
 
   describe "#dead_cells" do
     it "finds a dead cell at -1,0 that could potentially come alive" do
-      subject.dead_cells.should have_cell_at -1,0
+      subject.send(:dead_cells).should have_cell_at -1,0
     end
   end
 
