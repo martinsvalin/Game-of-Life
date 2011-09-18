@@ -119,7 +119,7 @@ describe "private methods" do
 
   describe "#newborns" do
     it "finds 1,1 as a newborn from 0,0; 1,0 and 2,0" do
-      pending
+      subject.send(:newborns).should have_cell_at [1,1]
     end
   end
 
