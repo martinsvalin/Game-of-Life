@@ -137,6 +137,12 @@ describe "private methods" do
     end
   end
 
+  describe "#coordinates_of_living_cells" do
+    it "has the same count as cells" do
+      subject.send(:coordinates_of_living_cells).count.should == subject.cells.count
+    end
+  end
+
   describe "#all_coordinates" do
     it "includes all alive cells' coordinates" do
       subject.send(:all_coordinates).should include(*subject.cells.map{|cell| [cell.x, cell.y]})
