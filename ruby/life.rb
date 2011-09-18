@@ -37,7 +37,7 @@ class Life
   end
 
   def coordinates_of_dead_cells
-    all_coordinates
+    all_coordinates - cells.map {|cell| [cell.x, cell.y]}
   end
 
   def all_coordinates
