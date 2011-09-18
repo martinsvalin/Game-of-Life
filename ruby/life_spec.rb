@@ -65,7 +65,6 @@ describe "Any dead cell with exactly three live neighbours becomes a live cell, 
   describe "A game where a dead cell has three living neighbors" do
     before { subject.add_cells [0,0], [1,0], [2,0] }
     it "brings a dead cell back to life" do
-      pending "need to implement #newborns and dead_cells first"
       subject.cells.should_not have_cell_at 1,1
       subject.tick!
       subject.cells.should have_cell_at 1,1
