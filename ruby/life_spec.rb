@@ -32,9 +32,9 @@ end
 
 describe "Any live cell with two or three live neighbours lives on to the next generation." do
   subject { Life.new }
-  describe "A game with three live cells in a row, at 0,0; 1,0 and 2,0" do
+  describe "A game where one cell has two neighbors" do
     before { subject.add_cells [0,0], [1,0], [2,0] }
-    it "has one survivor after one tick at 1,0" do
+    it "has a survivor after one tick at 1,0" do
       subject.tick!
       subject.cells.should have_cell_at 1,0
     end
