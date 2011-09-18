@@ -133,6 +133,11 @@ describe "private methods" do
     it "includes all alive cells" do
       subject.send(:dead_and_alive_cells).should include(*subject.cells)
     end
+
+    it "includes a dead cell" do
+      subject.send(:dead_and_alive_cells).should have_cell_at -1,0
+    end
+  end
   end
 end
 
