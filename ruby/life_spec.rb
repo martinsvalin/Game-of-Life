@@ -24,6 +24,11 @@ describe "Any live cell with fewer than two live neighbours dies, as if caused b
       subject.cells.first.should be_at 0,0
       subject.cells.last.should be_at 1,0
     end
+
+    it "has no survivors after one tick" do
+      subject.tick!
+      subject.cells.should be_empty
+    end
   end
 end
 
