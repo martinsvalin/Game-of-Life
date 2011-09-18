@@ -138,6 +138,20 @@ describe "private methods" do
       subject.send(:dead_and_alive_cells).should have_cell_at -1,0
     end
   end
+
+  describe "#complete neighborhood" do
+    it "has all cells surrounding a center cell, dead or alive, including the center cell" do
+      cells = subject.send(:complete_neighborhood, @center_cell)
+      cells.count.should == 9
+      cells.should have_cell_at -1, 1
+      cells.should have_cell_at  0, 1
+      cells.should have_cell_at  1, 1
+      cells.should have_cell_at -1, 0
+      cells.should have_cell_at  1, 0
+      cells.should have_cell_at -1,-1
+      cells.should have_cell_at  0,-1
+      cells.should have_cell_at  1,-1
+    end
   end
 end
 

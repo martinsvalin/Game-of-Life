@@ -41,6 +41,8 @@ class Life
   end
 
   def dead_and_alive_cells
-    cells
+    cells.inject([]) do |all_cells, cell|
+      all_cells + complete_neighborhood(cell)
+    end
   end
 end
