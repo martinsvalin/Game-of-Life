@@ -53,7 +53,7 @@ class Life
   def all_coordinates
     cells.inject([]) do |coordinates, cell|
       coordinates + coordinates_in_neighborhood(cell)
-    end
+    end.uniq
   end
 
   def coordinates_of_living_cells
