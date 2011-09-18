@@ -37,7 +37,7 @@ class Life
   end
 
   def coordinates_of_dead_cells
-    [[-1,0]]
+    all_coordinates
   end
 
   def all_coordinates
