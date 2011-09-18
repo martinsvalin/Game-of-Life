@@ -39,6 +39,14 @@ describe "Any live cell with two or three live neighbours lives on to the next g
       subject.cells.should have_cell_at 1,0
     end
   end
+
+  describe "A game where one cell has three neighbors" do
+    before { subject.add_cells [0,0], [1,0], [2,0], [1,1] }
+    it "has a survivor after one tick at 1,0" do
+      subject.tick!
+      subject.cells.should have_cell_at 1,0
+    end
+  end
 end
 describe "Any live cell with more than three live neighbours dies, as if by overcrowding."
 describe "Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction."
