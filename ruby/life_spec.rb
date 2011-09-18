@@ -63,6 +63,13 @@ describe "private methods" do
       cells.first.should be_at 0,0
       subject.send(:neighborhood, cells.first).should == cells
     end
+
+    it "does not find 10,0 in the neighboorhood of 0,0" do
+      subject.add_cell 10,0
+      cells = subject.cells
+      cells.first.should be_at 0,0
+      subject.send(:neighborhood, cells.first).map{|cell| [cell.x, cell.y] }.should_not include([10,0])
+    end
   end
 end
 
