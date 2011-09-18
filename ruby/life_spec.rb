@@ -55,6 +55,12 @@ describe "private methods" do
       subject.cells.first.should be_at 0,0
       subject.send(:neighbors, subject.cells.first).should have_cell_at 1,0
     end
+
+    it "does not find 0,0 as a neighbor to itself" do
+      subject.add_cells [0,0], [1,0]
+      subject.cells.first.should be_at 0,0
+      subject.send(:neighbors, subject.cells.first).should_not have_cell_at 0,0
+    end
   end
   describe "#neighborhood" do
     before do
