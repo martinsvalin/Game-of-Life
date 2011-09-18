@@ -39,4 +39,8 @@ class Life
   def dead_cells
     dead_and_alive_cells
   end
+
+  def dead_and_alive_cells
+    cells
+  end
 end
