@@ -22,7 +22,7 @@ class Life
 
   private
   def neighbors(cell)
-    cells
+    cells - [cell]
   end
 
   def neighborhood(center_cell)
