@@ -48,7 +48,17 @@ describe "Any live cell with two or three live neighbours lives on to the next g
     end
   end
 end
-describe "Any live cell with more than three live neighbours dies, as if by overcrowding."
+
+describe "Any live cell with more than three live neighbours dies, as if by overcrowding." do
+  subject { Life.new }
+  describe "A game where one cell has four neighbors" do
+    before { subject.add_cells [0,0], [1,0], [2,0], [1,1], [1,-1] }
+    it "does not have a survivor at 1,0 after one tick" do
+      subject.tick!
+      subject.cells.should_not have_cell_at 1,0
+    end
+  end
+end
 describe "Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction."
 
 describe "private methods" do
