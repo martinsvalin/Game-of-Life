@@ -76,19 +76,17 @@ end
 describe "private methods" do
   subject { Life.new }
   before do
-    subject.add_cells [0,0], [1,0], [10,0]
+    subject.add_cells [0,0], [1,0], [2,0], [10,0]
     @center_cell = subject.cells.first
     @center_cell.should be_at 0,0
   end
 
   describe "#survivors" do
     it "finds 1,0 as a survivor from 0,0; 1,0; 2,0 and 10,0" do
-      subject.add_cell 2,0
       subject.send(:survivors).should have_cell_at 1,0
     end
 
     it "has only one survivor from 0,0; 1,0; 2,0 and 10,0" do
-      subject.add_cell 2,0
       subject.send(:survivors).count.should == 1
     end
   end
