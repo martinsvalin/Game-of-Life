@@ -33,7 +33,7 @@ describe "Any live cell with fewer than two live neighbours dies, as if caused b
     before { subject.add_cells [0,0], [1,0], [2,0] }
     it "has one survivor after one tick at 1,0" do
       subject.tick!
-      subject.cells.map{|cell| [cell.x, cell.y] }.should include([1,0])
+      subject.cells.should have_cell_at 1,0
     end
   end
 end
@@ -68,7 +68,7 @@ describe "private methods" do
       subject.add_cell 10,0
       cells = subject.cells
       cells.first.should be_at 0,0
-      subject.send(:neighborhood, cells.first).map{|cell| [cell.x, cell.y] }.should_not include([10,0])
+      subject.send(:neighborhood, cells.first).should_not have_cell_at 10,0
     end
   end
 end
@@ -76,5 +76,11 @@ end
 RSpec::Matchers.define :be_at do |x, y|
   match do |cell|
     cell.x == x and cell.y == y
+  end
+end
+
+RSpec::Matchers.define :have_cell_at do |x, y|
+  match do |cells|
+    cells.map {|cell| [cell.x, cell.y] }.include? [x,y]
   end
 end
