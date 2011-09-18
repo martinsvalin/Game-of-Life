@@ -19,8 +19,8 @@ describe "Any live cell with fewer than two live neighbours dies, as if caused b
     before { subject.add_cells [0,0], [1,0] }
     it "has two cells, at 0,0 and 1,0 before the tick" do
       subject.cells.count.should == 2
-      subject.cells.first.should be_at 0,0
-      subject.cells.last.should be_at 1,0
+      subject.cells.should have_cell_at 0,0
+      subject.cells.should have_cell_at 1,0
     end
 
     it "has no survivors after one tick" do
