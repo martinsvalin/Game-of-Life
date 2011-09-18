@@ -139,18 +139,18 @@ describe "private methods" do
     end
   end
 
-  describe "#complete neighborhood" do
-    it "has all cells surrounding a center cell, dead or alive, including the center cell" do
-      cells = subject.send(:complete_neighborhood, @center_cell)
-      cells.count.should == 9
-      cells.should have_cell_at -1, 1
-      cells.should have_cell_at  0, 1
-      cells.should have_cell_at  1, 1
-      cells.should have_cell_at -1, 0
-      cells.should have_cell_at  1, 0
-      cells.should have_cell_at -1,-1
-      cells.should have_cell_at  0,-1
-      cells.should have_cell_at  1,-1
+  describe "#coordinates_in_neighborhood" do
+    it "has all coordinates surrounding and including a center cell" do
+      coordinates = subject.send(:coordinates_in_neighborhood, @center_cell)
+      coordinates.count.should == 9
+      coordinates.should include [-1, 1]
+      coordinates.should include [ 0, 1]
+      coordinates.should include [ 1, 1]
+      coordinates.should include [-1, 0]
+      coordinates.should include [ 1, 0]
+      coordinates.should include [-1,-1]
+      coordinates.should include [ 0,-1]
+      coordinates.should include [ 1,-1]
     end
   end
 end
