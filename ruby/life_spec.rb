@@ -1,8 +1,8 @@
 require './life'
 
 describe "Any live cell with fewer than two live neighbours dies, as if caused by under-population." do
+  subject { Life.new }
   describe "A game with only one live cell at coordinates 0,0" do
-    subject { Life.new }
     before { subject.add_cell 0,0 }
     it "has a cell at 0,0 before the tick" do
       subject.cells.count.should == 1
@@ -16,9 +16,7 @@ describe "Any live cell with fewer than two live neighbours dies, as if caused b
   end
 
   describe "A game with two adjacent live cells, at coordinates 0,0 and 1,0" do
-    subject { Life.new }
-    before { subject.add_cell 0,0 }
-    before { subject.add_cell 1,0 }
+    before { subject.add_cells [0,0], [1,0] }
     it "has two cells, at 0,0 and 1,0 before the tick" do
       subject.cells.count.should == 2
       subject.cells.first.should be_at 0,0
@@ -32,10 +30,7 @@ describe "Any live cell with fewer than two live neighbours dies, as if caused b
   end
 
   describe "A game with three live cells in a row, at 0,0; 1,0 and 2,0" do
-    subject { Life.new }
-    before { subject.add_cell 0,0 }
-    before { subject.add_cell 1,0 }
-    before { subject.add_cell 2,0 }
+    before { subject.add_cells [0,0], [1,0], [2,0] }
   end
 end
 
