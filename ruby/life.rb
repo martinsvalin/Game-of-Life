@@ -6,6 +6,10 @@ class Life
     @cells = []
   end
 
+  def tick!
+    @cells = []
+  end
+
   def add_cell(x, y)
     @cells << OpenStruct.new(x: y, y: y)
   end
