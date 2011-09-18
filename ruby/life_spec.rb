@@ -122,6 +122,12 @@ describe "private methods" do
     end
   end
 
+  describe "#potential_newborns" do
+    it "finds cell at 0,1 as a potential newborn" do
+      subject.send(:potential_newborns).should have_cell_at 0,1
+    end
+  end
+
   describe "#coordinates_of_dead_cells" do
     it "finds a dead cell at -1,0 that could potentially come alive" do
       subject.send(:coordinates_of_dead_cells).should include [-1,0]

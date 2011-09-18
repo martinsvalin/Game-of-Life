@@ -26,9 +26,7 @@ class Life
   end
 
   def newborns
-    coordinates_of_dead_cells.map do |x,y|
-      OpenStruct.new(x: x, y: y)
-    end
+    potential_newborns
   end
 
   def neighbors(cell)
@@ -39,6 +37,12 @@ class Life
     cells.select do |cell|
       (cell.x - center_cell.x).abs <= 1 and
       (cell.y - center_cell.y).abs <= 1
+    end
+  end
+
+  def potential_newborns
+    coordinates_of_dead_cells.map do |x,y|
+      OpenStruct.new(x: x, y: y)
     end
   end
 
