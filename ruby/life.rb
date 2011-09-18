@@ -6,10 +6,6 @@ class Life
     @cells = []
   end
 
-  def tick!
-    @cells = []
-  end
-
   def add_cells(*coordinates)
     coordinates.each do |x,y|
       add_cell(x,y)
@@ -18,5 +14,14 @@ class Life
 
   def add_cell(x, y)
     @cells << OpenStruct.new(x: x, y: y)
+  end
+
+  def tick!
+    @cells = []
+  end
+
+  private
+  def neighborhood(center_cell)
+    cells
   end
 end
