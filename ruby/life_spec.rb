@@ -74,21 +74,44 @@ end
 
 describe "Putting it all together" do
   subject { Life.new }
-  before { subject.add_cells [0,0], [1,0], [2,0] }
-  it "One tick from 0,0; 1,0; 2,0 should be 1,1, 0,1, -1,1" do
-    subject.tick!
-    subject.cells.count.should == 3
-    subject.cells.should have_cell_at 1,1
-    subject.cells.should have_cell_at 1,0
-    subject.cells.should have_cell_at 1,-1
+  describe "Blinker (oscillating pattern)" do
+    before { subject.add_cells [0,0], [1,0], [2,0] }
+    it "One tick from 0,0; 1,0; 2,0 should be 1,1, 0,1, -1,1" do
+      subject.tick!
+      subject.cells.count.should == 3
+      subject.cells.should have_cell_at 1,1
+      subject.cells.should have_cell_at 1,0
+      subject.cells.should have_cell_at 1,-1
+    end
+
+    it "Two ticks from 0,0; 1,0; 2,0 should end up back with the same cells" do
+      2.times { subject.tick! }
+      subject.cells.count.should == 3
+      subject.cells.should have_cell_at 0,0
+      subject.cells.should have_cell_at 1,0
+      subject.cells.should have_cell_at 2,0
+    end
   end
 
-  it "Two ticks from 0,0; 1,0; 2,0 should end up back with the same cells" do
-    2.times { subject.tick! }
-    subject.cells.count.should == 3
-    subject.cells.should have_cell_at 0,0
-    subject.cells.should have_cell_at 1,0
-    subject.cells.should have_cell_at 2,0
+  describe "Still life (stable pattern)" do
+    before { subject.add_cells [0,0], [1,0], [0,1] }
+    it "One tick from 0,0; 1,0; 0,1 should be 0,0; 1,0; 0,1; 1,1" do
+      subject.tick!
+      subject.cells.count.should == 4
+      subject.cells.should have_cell_at 0,0
+      subject.cells.should have_cell_at 1,0
+      subject.cells.should have_cell_at 0,1
+      subject.cells.should have_cell_at 1,1
+    end
+
+    it "Two ticks from 0,0; 1,0; 0,1 should still be 0,0; 1,0; 0,1; 1,1" do
+      2.times { subject.tick! }
+      subject.cells.count.should == 4
+      subject.cells.should have_cell_at 0,0
+      subject.cells.should have_cell_at 1,0
+      subject.cells.should have_cell_at 0,1
+      subject.cells.should have_cell_at 1,1
+    end
   end
 end
 
