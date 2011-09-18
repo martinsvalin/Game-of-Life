@@ -22,6 +22,9 @@ class Life
 
   private
   def neighborhood(center_cell)
-    cells
+    cells.select do |cell|
+      (cell.x - center_cell.x).abs <= 1 and
+      (cell.y - center_cell.y).abs <= 1
+    end
   end
 end
