@@ -28,7 +28,10 @@ describe "Any live cell with fewer than two live neighbours dies, as if caused b
       subject.cells.should be_empty
     end
   end
+end
 
+describe "Any live cell with two or three live neighbours lives on to the next generation." do
+  subject { Life.new }
   describe "A game with three live cells in a row, at 0,0; 1,0 and 2,0" do
     before { subject.add_cells [0,0], [1,0], [2,0] }
     it "has one survivor after one tick at 1,0" do
@@ -37,8 +40,6 @@ describe "Any live cell with fewer than two live neighbours dies, as if caused b
     end
   end
 end
-
-describe "Any live cell with two or three live neighbours lives on to the next generation."
 describe "Any live cell with more than three live neighbours dies, as if by overcrowding."
 describe "Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction."
 
