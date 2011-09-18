@@ -47,7 +47,7 @@ class Life
   end
 
   def coordinates_of_living_cells
-    Array.new(cells.count)
+    cells.map {|cell| [cell.x, cell.y]}
   end
 
   def coordinates_in_neighborhood(cell)
