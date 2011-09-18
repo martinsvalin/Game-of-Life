@@ -21,6 +21,10 @@ class Life
   end
 
   private
+  def neighbors(cell)
+    cells
+  end
+
   def neighborhood(center_cell)
     cells.select do |cell|
       (cell.x - center_cell.x).abs <= 1 and
