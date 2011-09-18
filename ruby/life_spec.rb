@@ -124,8 +124,8 @@ describe "private methods" do
   end
 
   describe "#dead_cells" do
-    it "gives a list of dead cells that may come to life" do
-      pending
+    it "finds a dead cell at -1,0 that could potentially come alive" do
+      subject.dead_cells.should have_cell_at -1,0
     end
   end
 end
