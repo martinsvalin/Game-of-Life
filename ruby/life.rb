@@ -22,7 +22,7 @@ class Life
 
   private
   def survivors
-    cells.select {|cell| neighbors(cell).count >= 2 }
+    cells.select {|cell| (2..3).include? neighbors(cell).count }
   end
 
   def neighbors(cell)
