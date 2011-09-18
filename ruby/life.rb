@@ -46,6 +46,10 @@ class Life
     end
   end
 
+  def coordinates_of_living_cells
+    Array.new(cells.count)
+  end
+
   def coordinates_in_neighborhood(cell)
     x, y = cell.x, cell.y
     [
