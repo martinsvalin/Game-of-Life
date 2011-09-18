@@ -72,6 +72,21 @@ describe "Any dead cell with exactly three live neighbours becomes a live cell, 
   end
 end
 
+describe "Putting it all together" do
+  subject { Life.new }
+  before { subject.add_cells [0,0], [1,0], [2,0] }
+  it "One tick from 0,0; 1,0; 2,0 should be 1,1, 0,1, -1,1" do
+    subject.tick!
+    subject.cells.count.should == 3
+    subject.cells.should have_cell_at 1,1
+    subject.cells.should have_cell_at 1,0
+    subject.cells.should have_cell_at 1,-1
+  end
+end
+
+#
+# Spec for private methods below
+#
 describe "private methods" do
   subject { Life.new }
   before do
