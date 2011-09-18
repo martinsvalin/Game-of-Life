@@ -65,6 +65,7 @@ describe "Any dead cell with exactly three live neighbours becomes a live cell, 
   describe "A game where a dead cell has three living neighbors" do
     before { subject.add_cells [0,0], [1,0], [2,0] }
     it "brings a dead cell back to life" do
+      pending "need to implement #newborns and dead_cells first"
       subject.cells.should_not have_cell_at 1,1
       subject.tick!
       subject.cells.should have_cell_at 1,1
@@ -91,6 +92,7 @@ describe "private methods" do
       subject.send(:survivors).count.should == 1
     end
   end
+
   describe "#neighbors" do
     it "finds 1,0 as a neighbor to 0,0" do
       subject.send(:neighbors, @center_cell).should have_cell_at 1,0
@@ -105,6 +107,7 @@ describe "private methods" do
       subject.send(:neighbors, @center_cell).should be_all {|cell| neighborhood.include? cell }
     end
   end
+
   describe "#neighborhood" do
     it "finds 0,0 and 1,0 in the neighborhood of 0,0" do
       subject.send(:neighborhood, @center_cell).should have_cell_at 0,0
@@ -113,6 +116,18 @@ describe "private methods" do
 
     it "does not find 10,0 in the neighborhood of 0,0" do
       subject.send(:neighborhood, @center_cell).should_not have_cell_at 10,0
+    end
+  end
+
+  describe "#newborns" do
+    it "finds 1,1 as a newborn from 0,0; 1,0 and 2,0" do
+      pending
+    end
+  end
+
+  describe "#dead_cells" do
+    it "gives a list of dead cells that may come to life" do
+      pending
     end
   end
 end
