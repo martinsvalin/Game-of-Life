@@ -129,13 +129,13 @@ describe "private methods" do
     end
   end
 
-  describe "#dead_and_alive_cells" do
-    it "includes all alive cells" do
-      subject.send(:dead_and_alive_cells).should include(*subject.cells)
+  describe "#all_coordinates" do
+    it "includes all alive cells' coordinates" do
+      subject.send(:all_coordinates).should include(*subject.cells.map{|cell| [cell.x, cell.y]})
     end
 
     it "includes a dead cell" do
-      subject.send(:dead_and_alive_cells).should have_cell_at -1,0
+      subject.send(:all_coordinates).should include [-1,0]
     end
   end
 
