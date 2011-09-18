@@ -51,7 +51,9 @@ describe "private methods" do
   end
   describe "#neighbors" do
     it "finds 1,0 as a neighbor to 0,0" do
-      pending
+      subject.add_cells [0,0], [1,0]
+      subject.cells.first.should be_at 0,0
+      subject.send(:neighbors, subject.cells.first).should have_cell_at 1,0
     end
   end
   describe "#neighborhood" do
