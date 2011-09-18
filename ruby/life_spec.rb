@@ -44,6 +44,12 @@ describe "Any dead cell with exactly three live neighbours becomes a live cell, 
 
 describe "private methods" do
   subject { Life.new }
+  before do
+    subject.add_cells [0,0], [1,0]
+    @center_cell = subject.cells.first
+    @center_cell.should be_at 0,0
+  end
+
   describe "#survivors" do
     it "finds 1,0 as a survivor from 0,0; 1,0 and 2,0" do
       pending
@@ -51,25 +57,17 @@ describe "private methods" do
   end
   describe "#neighbors" do
     it "finds 1,0 as a neighbor to 0,0" do
-      subject.add_cells [0,0], [1,0]
-      subject.cells.first.should be_at 0,0
-      subject.send(:neighbors, subject.cells.first).should have_cell_at 1,0
+      subject.send(:neighbors, @center_cell).should have_cell_at 1,0
     end
 
     it "does not find 0,0 as a neighbor to itself" do
-      subject.add_cells [0,0], [1,0]
-      subject.cells.first.should be_at 0,0
-      subject.send(:neighbors, subject.cells.first).should_not have_cell_at 0,0
+      subject.send(:neighbors, @center_cell).should_not have_cell_at 0,0
     end
   end
   describe "#neighborhood" do
-    before do
-      subject.add_cells [0,0], [1,0]
-      @center_cell = subject.cells.first
-      @center_cell.should be_at 0,0
-    end
     it "finds 0,0 and 1,0 in the neighborhood of 0,0" do
-      subject.send(:neighborhood, @center_cell).should == subject.cells
+      subject.send(:neighborhood, @center_cell).should have_cell_at 0,0
+      subject.send(:neighborhood, @center_cell).should have_cell_at 1,0
     end
 
     it "does not find 10,0 in the neighboorhood of 0,0" do
