@@ -128,6 +128,12 @@ describe "private methods" do
       subject.dead_cells.should have_cell_at -1,0
     end
   end
+
+  describe "#dead_and_alive_cells" do
+    it "includes all alive cells" do
+      subject.send(:dead_and_alive_cells).should include(*subject.cells)
+    end
+  end
 end
 
 RSpec::Matchers.define :be_at do |x, y|

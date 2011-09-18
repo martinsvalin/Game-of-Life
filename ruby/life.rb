@@ -35,4 +35,8 @@ class Life
       (cell.y - center_cell.y).abs <= 1
     end
   end
+
+  def dead_cells
+    dead_and_alive_cells
+  end
 end
