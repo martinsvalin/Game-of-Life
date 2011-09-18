@@ -40,9 +40,9 @@ class Life
     dead_and_alive_cells
   end
 
-  def dead_and_alive_cells
-    cells.inject([]) do |all_cells, cell|
-      all_cells + complete_neighborhood(cell)
+  def all_coordinates
+    cells.inject([]) do |coordinates, cell|
+      coordinates + coordinates_in_neighborhood(cell)
     end
   end
 
