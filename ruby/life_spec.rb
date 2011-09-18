@@ -57,18 +57,16 @@ describe "private methods" do
   describe "#neighborhood" do
     before do
       subject.add_cells [0,0], [1,0]
+      @center_cell = subject.cells.first
+      @center_cell.should be_at 0,0
     end
     it "finds 0,0 and 1,0 in the neighborhood of 0,0" do
-      cells = subject.cells
-      cells.first.should be_at 0,0
-      subject.send(:neighborhood, cells.first).should == cells
+      subject.send(:neighborhood, @center_cell).should == subject.cells
     end
 
     it "does not find 10,0 in the neighboorhood of 0,0" do
       subject.add_cell 10,0
-      cells = subject.cells
-      cells.first.should be_at 0,0
-      subject.send(:neighborhood, cells.first).should_not have_cell_at 10,0
+      subject.send(:neighborhood, @center_cell).should_not have_cell_at 10,0
     end
   end
 end
