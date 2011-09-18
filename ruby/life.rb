@@ -11,6 +11,6 @@ class Life
   end
 
   def add_cell(x, y)
-    @cells << OpenStruct.new(x: y, y: y)
+    @cells << OpenStruct.new(x: x, y: y)
   end
 end
