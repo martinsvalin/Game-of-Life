@@ -82,6 +82,14 @@ describe "Putting it all together" do
     subject.cells.should have_cell_at 1,0
     subject.cells.should have_cell_at 1,-1
   end
+
+  it "Two ticks from 0,0; 1,0; 2,0 should end up back with the same cells" do
+    2.times { subject.tick! }
+    subject.cells.count.should == 3
+    subject.cells.should have_cell_at 0,0
+    subject.cells.should have_cell_at 1,0
+    subject.cells.should have_cell_at 2,0
+  end
 end
 
 #
