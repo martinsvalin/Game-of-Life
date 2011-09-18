@@ -17,7 +17,7 @@ class Life
   end
 
   def tick!
-    @cells = survivors
+    @cells = survivors + newborns
   end
 
   private
@@ -26,7 +26,7 @@ class Life
   end
 
   def newborns
-    potential_newborns
+    potential_newborns.select {|cell| neighbors(cell).count == 3}
   end
 
   def neighbors(cell)
