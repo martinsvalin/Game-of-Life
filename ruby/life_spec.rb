@@ -123,9 +123,9 @@ describe "private methods" do
     end
   end
 
-  describe "#dead_cells" do
+  describe "#coordinates_of_dead_cells" do
     it "finds a dead cell at -1,0 that could potentially come alive" do
-      subject.send(:dead_cells).should have_cell_at -1,0
+      subject.send(:coordinates_of_dead_cells).should include [-1,0]
     end
   end
 
