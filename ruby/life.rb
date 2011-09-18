@@ -21,6 +21,10 @@ class Life
   end
 
   private
+  def survivors
+    cells
+  end
+
   def neighbors(cell)
     neighborhood(cell) - [cell]
   end
