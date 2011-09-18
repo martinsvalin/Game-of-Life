@@ -45,4 +45,13 @@ class Life
       all_cells + complete_neighborhood(cell)
     end
   end
+
+  def coordinates_in_neighborhood(cell)
+    x, y = cell.x, cell.y
+    [
+      [x-1, y+1], [x, y+1], [x+1, y+1],
+      [x-1, y  ], [x, y  ], [x+1, y  ],
+      [x-1, y-1], [x, y-1], [x+1, y-1]
+    ]
+  end
 end
