@@ -17,6 +17,6 @@ class Survival
   end
 
   def neighbour_count(cell)
-    (Neighbourhood.cells_around(cell) & cells).length
+    (Neighbourhood.cells_around(*cell) & cells).length
   end
 end
