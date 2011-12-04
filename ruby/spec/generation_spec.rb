@@ -35,9 +35,15 @@ describe "Generation" do
       gen.tick.should be_instance_of Generation
     end
 
-    it "applies rules for survival" do
+    it "applies rules for survival on living cells" do
       Survival.should_receive(:apply).with(gen.cells)
       gen.tick
+    end
+
+    it "should include survivors in the next generation" do
+      Survival.should_receive(:apply).and_return([[1,1]])
+      next_gen = gen.tick
+      next_gen.cells.should include [1,1]
     end
   end
 end

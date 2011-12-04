@@ -7,6 +7,6 @@ class Generation
 
   def tick
     survivors = Survival.apply(cells)
-    self
+    Generation.new survivors
   end
 end
