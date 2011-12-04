@@ -37,12 +37,12 @@ describe "Generation" do
     end
 
     it "applies rules for survival on living cells" do
-      Survival.should_receive(:apply).with(gen.cells)
+      Survival.should_receive(:apply).with(gen.cells).and_return []
       gen.tick
     end
 
     it "applies rules for reproduction on living cells" do
-      Reproduction.should_receive(:apply).with(gen.cells)
+      Reproduction.should_receive(:apply).with(gen.cells).and_return []
       gen.tick
     end
 
@@ -50,6 +50,12 @@ describe "Generation" do
       Survival.should_receive(:apply).and_return([[1,1]])
       next_gen = gen.tick
       next_gen.cells.should include [1,1]
+    end
+
+    it "should include newborn cells in the next generation" do
+      Reproduction.should_receive(:apply).and_return([[2,2]])
+      next_gen = gen.tick
+      next_gen.cells.should include [2,2]
     end
   end
 end
