@@ -18,6 +18,13 @@ describe "Survival" do
     end
   end
 
+  describe "apply" do
+    it "should return survivors" do
+      Survival.any_instance.stub(:apply).and_return([[1,1]])
+      Survival.apply([]).should =~ [[1,1]]
+    end
+  end
+
   describe "#neighbour_count" do
     context "with one cell" do
       let(:rule) { Survival.new [[0,0]]}

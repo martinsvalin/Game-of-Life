@@ -8,6 +8,7 @@ class Survival
   end
 
   def self.apply(cells)
+    new(cells).apply
   end
 
   def apply
