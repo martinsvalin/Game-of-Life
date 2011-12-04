@@ -1,4 +1,5 @@
 require './lib/generation'
+require './lib/survival'
 
 describe "Generation" do
   describe "#cells" do
@@ -32,6 +33,11 @@ describe "Generation" do
     let(:gen) { Generation.new }
     it "returns the next generation" do
       gen.tick.should be_instance_of Generation
+    end
+
+    it "applies rules for survival" do
+      Survival.should_receive(:apply).with(gen.cells)
+      gen.tick
     end
   end
 end
