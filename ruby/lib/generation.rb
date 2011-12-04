@@ -1,9 +1,11 @@
 class Generation
-  def tick
-    self
+  attr_reader :cells
+
+  def initialize(cells = [])
+    @cells = cells
   end
 
-  def cells
-    []
+  def tick
+    self
   end
 end
