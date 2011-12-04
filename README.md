@@ -9,4 +9,4 @@ It's a form of [code kata](http://codekata.pragprog.com) – the point is to pra
 It's also an opportunity to get aquainted with new languages and test frameworks.
 
 ## Implementations so far
-* [Ruby](http://www.ruby-lang.org) with [RSpec](https://www.relishapp.com/rspec) - starting off with the familiar
+* [Ruby](http://www.ruby-lang.org) with [RSpec](https://www.relishapp.com/rspec) and [Cucumber](http://cukes.info) - starting off in a familiar language
