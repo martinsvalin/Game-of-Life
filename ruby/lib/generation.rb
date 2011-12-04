@@ -7,6 +7,7 @@ class Generation
 
   def tick
     survivors = Survival.apply(cells)
+    new_borns = Reproduction.apply(cells)
     Generation.new survivors
   end
 end

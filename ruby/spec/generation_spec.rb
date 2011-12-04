@@ -1,5 +1,6 @@
 require './lib/generation'
 require './lib/survival'
+require './lib/reproduction'
 
 describe "Generation" do
   describe "#cells" do
@@ -37,6 +38,11 @@ describe "Generation" do
 
     it "applies rules for survival on living cells" do
       Survival.should_receive(:apply).with(gen.cells)
+      gen.tick
+    end
+
+    it "applies rules for reproduction on living cells" do
+      Reproduction.should_receive(:apply).with(gen.cells)
       gen.tick
     end
 
