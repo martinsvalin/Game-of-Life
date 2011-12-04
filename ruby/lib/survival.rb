@@ -13,7 +13,7 @@ class Survival
 
   def apply
     cells.select do |cell|
-      neighbour_count(cell) > 1
+      (2..3) === neighbour_count(cell)
     end
   end
 

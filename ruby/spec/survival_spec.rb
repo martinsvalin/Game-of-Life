@@ -18,6 +18,14 @@ describe "Survival" do
     end
   end
 
+  context "with six cells, two by three" do
+    let(:cells) { [[0,0], [0,1], [0,2], [1,0], [1,1], [1,2]] }
+    let(:rule) { Survival.new cells }
+    it "has four survivors, but the middle cells die" do
+      rule.apply.should =~ (cells - [[0,1], [1,1]])
+    end
+  end
+
   describe "apply" do
     it "should return survivors" do
       Survival.any_instance.stub(:apply).and_return([[1,1]])
