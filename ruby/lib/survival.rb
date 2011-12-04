@@ -1,3 +1,5 @@
+require './lib/neighbourhood'
+
 class Survival
   attr_reader :cells
 
@@ -6,7 +8,6 @@ class Survival
   end
 
   def self.apply(cells)
-    
   end
 
   def apply
@@ -16,6 +17,6 @@ class Survival
   end
 
   def neighbour_count(cell)
-    0
+    (Neighbourhood.cells_around(cell) & cells).length
   end
 end
