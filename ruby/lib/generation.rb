@@ -1,3 +1,6 @@
+require './lib/survival'
+require './lib/reproduction'
+
 class Generation
   attr_reader :cells
 
