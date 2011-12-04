@@ -7,8 +7,9 @@ When /^we tick to the next generation$/ do
   @generation = @generation.tick
 end
 
-Then /^the cell dies$/ do
-  @generation.cells.should be_empty
+Then /^the cells? at ((\d+,\d+ ?)+) dies$/ do |coordinates, last|
+  cells = parse(coordinates)
+  @generation.cells.should_not include cells
 end
 
 Then /^we have a? ?surviving cells? at ((\d+,\d+ ?)+)$/ do |coordinates, last|
