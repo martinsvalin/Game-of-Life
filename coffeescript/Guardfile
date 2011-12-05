@@ -1,0 +1,2 @@
+guard 'coffeescript', :input => 'test'
+guard 'coffeescript', :input => 'lib'
