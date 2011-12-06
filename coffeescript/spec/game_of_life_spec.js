@@ -31,7 +31,7 @@
   });
 
   describe('Survival', function() {
-    return describe('apply', function() {
+    describe('apply', function() {
       it('returns a list of surviving cells', function() {
         return expect(Survival([]).apply()).toEqual([]);
       });
@@ -47,6 +47,11 @@
         rule = Survival(cells);
         spyOn(rule, 'neighbour_count').andReturn(3);
         return expect(rule.apply()).toEqual(cells);
+      });
+    });
+    return describe('neighbour_count', function() {
+      return it('with a single cell finds no neighbours', function() {
+        return expect(Survival([[0, 0]]).neighbour_count([0, 0])).toEqual(0);
       });
     });
   });

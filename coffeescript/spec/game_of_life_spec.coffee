@@ -36,3 +36,7 @@ describe 'Survival', ->
       rule = Survival(cells)
       spyOn(rule, 'neighbour_count').andReturn 3
       expect(rule.apply()).toEqual cells
+
+  describe 'neighbour_count', ->
+    it 'with a single cell finds no neighbours', ->
+      expect(Survival([[0,0]]).neighbour_count([0,0])).toEqual 0
