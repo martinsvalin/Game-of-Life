@@ -13,7 +13,13 @@
   window.Survival = function(cells) {
     return {
       apply: function() {
-        return cells;
+        var _this = this;
+        return _.filter(cells, function(cell) {
+          return _this.neighbour_count(cell) > 1;
+        });
+      },
+      neighbour_count: function(cell) {
+        return 0;
       }
     };
   };

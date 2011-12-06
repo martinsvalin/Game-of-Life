@@ -27,8 +27,12 @@ describe 'Survival', ->
       expect(Survival([]).apply()).toEqual []
 
     it 'with a single cell returns no survivors', ->
-      expect(Survival([[0,0]]).apply()).toEqual []
+      rule = Survival([[0,0]])
+      spyOn(rule, 'neighbour_count').andReturn 0
+      expect(rule.apply()).toEqual []
 
     it 'with a block of four cells returns all cells as survivors', ->
       cells = [[0,0], [0,1], [1,0], [1,1]]
-      expect(Survival(cells).apply()).toEqual cells
+      rule = Survival(cells)
+      spyOn(rule, 'neighbour_count').andReturn 3
+      expect(rule.apply()).toEqual cells

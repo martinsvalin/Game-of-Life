@@ -5,4 +5,7 @@ window.Generation = (cells = [])->
     Generation()
 
 window.Survival = (cells)->
-  apply: -> cells
+  apply: ->
+    _.filter cells, (cell)=>
+      @neighbour_count(cell) > 1
+  neighbour_count: (cell)-> 0
