@@ -50,8 +50,17 @@
 
   describe('Neighbourhood', function() {
     return describe('living', function() {
-      return it("doesn't include itself", function() {
-        return expect(Neighbourhood.living([[0, 0]], [0, 0])).not.toContain([0, 0]);
+      it("doesn't include itself", function() {
+        var center_cell, living_cells;
+        living_cells = [[0, 0]];
+        center_cell = _(living_cells).first();
+        return expect(Neighbourhood.living(living_cells, center_cell)).not.toContain(center_cell);
+      });
+      return it("finds some living neighbours", function() {
+        var center_cell, living_cells;
+        living_cells = [[0, 0], [0, 1], [1, 0], [1, 1]];
+        center_cell = _(living_cells).first();
+        return expect(Neighbourhood.living(living_cells, center_cell)).toEqual([[0, 1], [1, 0], [1, 1]]);
       });
     });
   });

@@ -11,4 +11,5 @@ window.Survival =
 
 window.Neighbourhood =
   living: (living_cells, center_cell)->
-    []
+    _.without(living_cells, center_cell)
+

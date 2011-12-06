@@ -21,6 +21,6 @@
 
   window.Neighbourhood = {
     living: function(living_cells, center_cell) {
-      return [];
+      return _.without(living_cells, center_cell);
     }
   };
