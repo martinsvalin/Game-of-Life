@@ -1,6 +1,9 @@
 
   window.generation = function() {
     return {
-      cells: []
+      cells: [],
+      tick: function() {
+        return generation();
+      }
     };
   };

@@ -10,3 +10,9 @@
   test('Generation should have a list of cells', function() {
     return same(generation().cells, []);
   });
+
+  test('Generation should tick to the next generation', function() {
+    return sameObject(generation().tick(), generation());
+  });
+
+}).call(this);
