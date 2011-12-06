@@ -8,13 +8,13 @@
   });
 
   describe('Generation', function() {
-    it('should have a list of cells', function() {
-      return expect(Generation().cells).toEqual([]);
-    });
-    describe('with a cell at [0,0]', function() {
-      var cells;
-      cells = [[0, 0]];
-      return it('should report its cell', function() {
+    describe('cells', function() {
+      it('should have a list of cells', function() {
+        return expect(Generation().cells).toEqual([]);
+      });
+      return it('with a cell at [0,0] should report its cell', function() {
+        var cells;
+        cells = [[0, 0]];
         return expect(Generation(cells).cells).toEqual(cells);
       });
     });

@@ -4,12 +4,12 @@ beforeEach ->
       JSON.stringify(@actual) == JSON.stringify(expected);
 
 describe 'Generation', ->
-  it 'should have a list of cells', ->
-    expect(Generation().cells).toEqual []
+  describe 'cells', ->
+    it 'should have a list of cells', ->
+      expect(Generation().cells).toEqual []
 
-  describe 'with a cell at [0,0]', ->
-    cells = [[0,0]]
-    it 'should report its cell', ->
+    it 'with a cell at [0,0] should report its cell', ->
+      cells = [[0,0]]
       expect(Generation(cells).cells).toEqual cells
 
   describe 'tick', ->
