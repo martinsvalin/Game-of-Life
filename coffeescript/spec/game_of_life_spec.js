@@ -49,18 +49,31 @@
   });
 
   describe('Neighbourhood', function() {
-    return describe('living', function() {
+    describe('living', function() {
       it("doesn't include itself", function() {
         var center_cell, living_cells;
         living_cells = [[0, 0]];
         center_cell = _(living_cells).first();
         return expect(Neighbourhood.living(living_cells, center_cell)).not.toContain(center_cell);
       });
-      return it("finds some living neighbours", function() {
+      it("finds some living neighbours", function() {
         var center_cell, living_cells;
         living_cells = [[0, 0], [0, 1], [1, 0], [1, 1]];
         center_cell = _(living_cells).first();
         return expect(Neighbourhood.living(living_cells, center_cell)).toEqual([[0, 1], [1, 0], [1, 1]]);
+      });
+      return xit("excludes live cells that are not neighbours", function() {
+        var center_cell, living_cells;
+        living_cells = [[0, 0], [2, 2]];
+        center_cell = _(living_cells).first();
+        return expect(Neighbourhood.living(living_cells, center_cell)).toEqual([]);
+      });
+    });
+    return describe('around', function() {
+      return it("finds all cells around the center cell", function() {
+        var expected;
+        expected = [[4, 4], [4, 5], [4, 6], [5, 4], [5, 6], [6, 4], [6, 5], [6, 6]];
+        return expect(Neighbourhood.around([5, 5])).toEqual(expected);
       });
     });
   });
