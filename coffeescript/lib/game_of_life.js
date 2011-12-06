@@ -21,7 +21,11 @@
 
   window.Neighbourhood = {
     living: function(living_cells, center_cell) {
-      return _.without(living_cells, center_cell);
+      return _(this.around(center_cell)).filter(function(neighbour_cell) {
+        return _(living_cells).any(function(living_cell) {
+          return living_cell[0] === neighbour_cell[0] && living_cell[1] === neighbour_cell[1];
+        });
+      });
     },
     around: function(center_cell) {
       var a, b, cells, x, y, _i, _j, _len, _len2, _ref, _ref2;

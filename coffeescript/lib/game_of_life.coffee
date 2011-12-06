@@ -11,7 +11,10 @@ window.Survival =
 
 window.Neighbourhood =
   living: (living_cells, center_cell)->
-    _.without(living_cells, center_cell)
+    _(@around(center_cell)).filter (neighbour_cell)->
+      _(living_cells).any (living_cell)->
+        living_cell[0] == neighbour_cell[0] and living_cell[1] == neighbour_cell[1]
+
   around: (center_cell)->
     [x,y] = center_cell
     cells = []

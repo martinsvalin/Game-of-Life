@@ -62,7 +62,7 @@
         center_cell = _(living_cells).first();
         return expect(Neighbourhood.living(living_cells, center_cell)).toEqual([[0, 1], [1, 0], [1, 1]]);
       });
-      return xit("excludes live cells that are not neighbours", function() {
+      return it("excludes live cells that are not neighbours", function() {
         var center_cell, living_cells;
         living_cells = [[0, 0], [2, 2]];
         center_cell = _(living_cells).first();

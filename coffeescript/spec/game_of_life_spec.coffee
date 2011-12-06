@@ -49,7 +49,7 @@ describe 'Neighbourhood', ->
       center_cell = _(living_cells).first()
       expect(Neighbourhood.living(living_cells, center_cell)).toEqual [[0,1], [1,0], [1,1]]
 
-    xit "excludes live cells that are not neighbours", ->
+    it "excludes live cells that are not neighbours", ->
       living_cells = [[0,0], [2,2]]
       center_cell = _(living_cells).first()
       expect(Neighbourhood.living(living_cells, center_cell)).toEqual []
