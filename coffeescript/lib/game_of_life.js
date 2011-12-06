@@ -10,10 +10,10 @@
     };
   };
 
-  window.Survival = function() {
+  window.Survival = function(cells) {
     return {
       apply: function() {
-        return [];
+        return cells;
       }
     };
   };

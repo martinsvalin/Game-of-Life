@@ -4,5 +4,5 @@ window.Generation = (cells = [])->
     Survival.apply()
     Generation()
 
-window.Survival = ->
-  apply: -> []
+window.Survival = (cells)->
+  apply: -> cells
