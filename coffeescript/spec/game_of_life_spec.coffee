@@ -43,6 +43,15 @@ describe 'Survival', ->
       ]
       expect(Survival.for_cells(cells)).toEqual cells
 
+    it "with five cells in a cross does not return the center cell", ->
+      cells = [[0,1],
+        [1,0], [1,1], [1,2],
+               [2,1]]
+      expect(Survival.for_cells(cells)).toEqual [
+               [0,1],
+        [1,0],        [1,2],
+               [2,1]]
+
 describe 'Neighbourhood', ->
   describe 'living', ->
     it "doesn't include itself", ->

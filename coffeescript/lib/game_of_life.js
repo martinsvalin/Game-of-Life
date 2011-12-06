@@ -14,7 +14,9 @@
     for_cells: function(cells) {
       var _this = this;
       return _.filter(cells, function(cell) {
-        return Neighbourhood.living(cells, cell).length > 1;
+        var neighbour_count;
+        neighbour_count = Neighbourhood.living(cells, cell).length;
+        return neighbour_count === 2 || neighbour_count === 3;
       });
     }
   };

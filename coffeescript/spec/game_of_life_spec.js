@@ -39,11 +39,16 @@
         spyOn(Neighbourhood, 'living').andReturn(0);
         return expect(Survival.for_cells([[0, 0]])).toEqual([]);
       });
-      return it('with a block of four cells returns all cells as survivors', function() {
+      it('with a block of four cells returns all cells as survivors', function() {
         var cells;
         cells = [[0, 0], [0, 1], [1, 0], [1, 1]];
         spyOn(Neighbourhood, 'living').andReturn([[0, 0], [0, 1], [1, 0]]);
         return expect(Survival.for_cells(cells)).toEqual(cells);
+      });
+      return it("with five cells in a cross does not return the center cell", function() {
+        var cells;
+        cells = [[0, 1], [1, 0], [1, 1], [1, 2], [2, 1]];
+        return expect(Survival.for_cells(cells)).toEqual([[0, 1], [1, 0], [1, 2], [2, 1]]);
       });
     });
   });
