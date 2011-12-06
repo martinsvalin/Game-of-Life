@@ -1,3 +1,9 @@
+(function() {
+  var sameObject;
+
+  sameObject = function(a, b) {
+    return equal(JSON.stringify(a), JSON.stringify(b));
+  };
 
   module('Generation');
 
