@@ -3,20 +3,20 @@ beforeEach ->
     toSerializeTo: (expected)->
       JSON.stringify(@actual) == JSON.stringify(expected);
 
-describe 'generation', ->
+describe 'Generation', ->
   it 'should have a list of cells', ->
-    expect(generation().cells).toEqual []
+    expect(Generation().cells).toEqual []
 
   describe 'with a cell at [0,0]', ->
     cells = [[0,0]]
     it 'should report its cell', ->
-      expect(generation(cells).cells).toEqual cells
+      expect(Generation(cells).cells).toEqual cells
 
   describe 'tick', ->
-    it 'should tick to the next generation', ->
-      expect(generation().tick()).toSerializeTo generation()
+    it 'should tick to the next Generation', ->
+      expect(Generation().tick()).toSerializeTo Generation()
 
-    it 'should apply survival rules', ->
+    it 'should apply Survival rules', ->
       spyOn Survival, 'apply'
-      generation().tick()
+      Generation().tick()
       expect(Survival.apply).toHaveBeenCalled()

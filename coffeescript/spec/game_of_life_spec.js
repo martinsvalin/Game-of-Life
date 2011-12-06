@@ -7,24 +7,24 @@
     });
   });
 
-  describe('generation', function() {
+  describe('Generation', function() {
     it('should have a list of cells', function() {
-      return expect(generation().cells).toEqual([]);
+      return expect(Generation().cells).toEqual([]);
     });
     describe('with a cell at [0,0]', function() {
       var cells;
       cells = [[0, 0]];
       return it('should report its cell', function() {
-        return expect(generation(cells).cells).toEqual(cells);
+        return expect(Generation(cells).cells).toEqual(cells);
       });
     });
     return describe('tick', function() {
-      it('should tick to the next generation', function() {
-        return expect(generation().tick()).toSerializeTo(generation());
+      it('should tick to the next Generation', function() {
+        return expect(Generation().tick()).toSerializeTo(Generation());
       });
-      return it('should apply survival rules', function() {
+      return it('should apply Survival rules', function() {
         spyOn(Survival, 'apply');
-        generation().tick();
+        Generation().tick();
         return expect(Survival.apply).toHaveBeenCalled();
       });
     });

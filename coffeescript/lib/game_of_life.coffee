@@ -1,8 +1,8 @@
-window.generation = (cells = [])->
+window.Generation = (cells = [])->
   cells: cells
   tick: ->
     Survival.apply()
-    generation()
+    Generation()
 
 window.Survival = ->
   apply: ->
