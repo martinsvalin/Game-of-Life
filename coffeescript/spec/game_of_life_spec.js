@@ -29,3 +29,11 @@
       });
     });
   });
+
+  describe('Survival', function() {
+    return describe('apply', function() {
+      return it('returns a list of surviving cells', function() {
+        return expect(Survival([]).apply()).toEqual([]);
+      });
+    });
+  });

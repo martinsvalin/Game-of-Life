@@ -20,3 +20,8 @@ describe 'Generation', ->
       spyOn Survival, 'apply'
       Generation().tick()
       expect(Survival.apply).toHaveBeenCalled()
+
+describe 'Survival', ->
+  describe 'apply', ->
+    it 'returns a list of surviving cells', ->
+      expect(Survival([]).apply()).toEqual []

@@ -12,6 +12,8 @@
 
   window.Survival = function() {
     return {
-      apply: function() {}
+      apply: function() {
+        return [];
+      }
     };
   };

@@ -5,4 +5,4 @@ window.Generation = (cells = [])->
     Generation()
 
 window.Survival = ->
-  apply: ->
+  apply: -> []
