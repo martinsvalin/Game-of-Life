@@ -47,3 +47,11 @@
       });
     });
   });
+
+  describe('Neighbourhood', function() {
+    return describe('living', function() {
+      return it("doesn't include itself", function() {
+        return expect(Neighbourhood.living([[0, 0]], [0, 0])).not.toContain([0, 0]);
+      });
+    });
+  });

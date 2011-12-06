@@ -36,3 +36,8 @@ describe 'Survival', ->
       # Stub Neighbourhood. Not correct, but works as long as length is 3
       spyOn(Neighbourhood, 'living').andReturn [[0,0], [0,1], [1,0]]
       expect(Survival.for_cells(cells)).toEqual cells
+
+describe 'Neighbourhood', ->
+  describe 'living', ->
+    it "doesn't include itself", ->
+      expect(Neighbourhood.living([[0,0]], [0,0])).not.toContain [0,0]

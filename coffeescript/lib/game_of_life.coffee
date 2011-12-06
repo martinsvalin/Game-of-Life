@@ -10,4 +10,5 @@ window.Survival =
       Neighbourhood.living(cells, cell).length > 1
 
 window.Neighbourhood =
-  living: ->
+  living: (living_cells, center_cell)->
+    []

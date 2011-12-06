@@ -20,5 +20,7 @@
   };
 
   window.Neighbourhood = {
-    living: function() {}
+    living: function(living_cells, center_cell) {
+      return [];
+    }
   };
