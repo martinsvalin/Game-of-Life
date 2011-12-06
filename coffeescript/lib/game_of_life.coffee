@@ -1,3 +1,3 @@
-window.generation = ->
-  cells: []
+window.generation = (cells = [])->
+  cells: cells
   tick: -> generation()

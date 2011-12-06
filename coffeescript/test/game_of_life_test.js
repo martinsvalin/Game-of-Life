@@ -11,6 +11,10 @@
     return same(generation().cells, []);
   });
 
+  test('Generation with a cell reports its cell', function() {
+    return same(generation([[0, 0]]).cells, [[0, 0]]);
+  });
+
   test('Generation should tick to the next generation', function() {
     return sameObject(generation().tick(), generation());
   });
