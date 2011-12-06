@@ -1,11 +1,13 @@
 window.Generation = (cells = [])->
   cells: cells
   tick: ->
-    Survival.apply()
+    Survival.for_cells(cells)
     Generation()
 
-window.Survival = (cells)->
-  apply: ->
+window.Survival =
+  for_cells: (cells)->
     _.filter cells, (cell)=>
-      @neighbour_count(cell) > 1
-  neighbour_count: (cell)-> 0
+      Neighbourhood.living(cells, cell).length > 1
+
+window.Neighbourhood =
+  living: ->

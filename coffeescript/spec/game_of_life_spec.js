@@ -23,35 +23,27 @@
         return expect(Generation().tick()).toSerializeTo(Generation());
       });
       return it('should apply Survival rules', function() {
-        spyOn(Survival, 'apply');
+        spyOn(Survival, 'for_cells');
         Generation().tick();
-        return expect(Survival.apply).toHaveBeenCalled();
+        return expect(Survival.for_cells).toHaveBeenCalledWith([]);
       });
     });
   });
 
   describe('Survival', function() {
-    describe('apply', function() {
+    return describe('for_cells', function() {
       it('returns a list of surviving cells', function() {
-        return expect(Survival([]).apply()).toEqual([]);
+        return expect(Survival.for_cells([])).toEqual([]);
       });
       it('with a single cell returns no survivors', function() {
-        var rule;
-        rule = Survival([[0, 0]]);
-        spyOn(rule, 'neighbour_count').andReturn(0);
-        return expect(rule.apply()).toEqual([]);
+        spyOn(Neighbourhood, 'living').andReturn(0);
+        return expect(Survival.for_cells([[0, 0]])).toEqual([]);
       });
       return it('with a block of four cells returns all cells as survivors', function() {
-        var cells, rule;
+        var cells;
         cells = [[0, 0], [0, 1], [1, 0], [1, 1]];
-        rule = Survival(cells);
-        spyOn(rule, 'neighbour_count').andReturn(3);
-        return expect(rule.apply()).toEqual(cells);
-      });
-    });
-    return describe('neighbour_count', function() {
-      return it('with a single cell finds no neighbours', function() {
-        return expect(Survival([[0, 0]]).neighbour_count([0, 0])).toEqual(0);
+        spyOn(Neighbourhood, 'living').andReturn([[0, 0], [0, 1], [1, 0]]);
+        return expect(Survival.for_cells(cells)).toEqual(cells);
       });
     });
   });

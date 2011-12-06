@@ -4,22 +4,21 @@
     return {
       cells: cells,
       tick: function() {
-        Survival.apply();
+        Survival.for_cells(cells);
         return Generation();
       }
     };
   };
 
-  window.Survival = function(cells) {
-    return {
-      apply: function() {
-        var _this = this;
-        return _.filter(cells, function(cell) {
-          return _this.neighbour_count(cell) > 1;
-        });
-      },
-      neighbour_count: function(cell) {
-        return 0;
-      }
-    };
+  window.Survival = {
+    for_cells: function(cells) {
+      var _this = this;
+      return _.filter(cells, function(cell) {
+        return Neighbourhood.living(cells, cell).length > 1;
+      });
+    }
+  };
+
+  window.Neighbourhood = {
+    living: function() {}
   };
