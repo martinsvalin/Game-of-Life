@@ -4,7 +4,14 @@
     return {
       cells: cells,
       tick: function() {
+        Survival.apply();
         return generation();
       }
+    };
+  };
+
+  window.Survival = function() {
+    return {
+      apply: function() {}
     };
   };

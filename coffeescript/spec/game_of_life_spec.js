@@ -18,7 +18,14 @@
         return expect(generation(cells).cells).toEqual(cells);
       });
     });
-    return it('should tick to the next generation', function() {
-      return expect(generation().tick()).toSerializeTo(generation());
+    return describe('tick', function() {
+      it('should tick to the next generation', function() {
+        return expect(generation().tick()).toSerializeTo(generation());
+      });
+      return it('should apply survival rules', function() {
+        spyOn(Survival, 'apply');
+        generation().tick();
+        return expect(Survival.apply).toHaveBeenCalled();
+      });
     });
   });

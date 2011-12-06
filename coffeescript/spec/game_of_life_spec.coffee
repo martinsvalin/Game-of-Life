@@ -12,6 +12,11 @@ describe 'generation', ->
     it 'should report its cell', ->
       expect(generation(cells).cells).toEqual cells
 
-  it 'should tick to the next generation', ->
-    expect(generation().tick()).toSerializeTo generation()
+  describe 'tick', ->
+    it 'should tick to the next generation', ->
+      expect(generation().tick()).toSerializeTo generation()
 
+    it 'should apply survival rules', ->
+      spyOn Survival, 'apply'
+      generation().tick()
+      expect(Survival.apply).toHaveBeenCalled()
