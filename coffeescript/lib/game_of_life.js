@@ -1,4 +1,6 @@
 
-  window.foo = function() {
-    return "bar";
+  window.generation = function() {
+    return {
+      cells: []
+    };
   };

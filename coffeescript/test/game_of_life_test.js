@@ -1,4 +1,6 @@
 
-  test('foo should be "bar"', function() {
-    return equals(foo(), "bar");
+  module('Generation');
+
+  test('Generation should have a list of cells', function() {
+    return same(generation().cells, []);
   });

@@ -1,2 +1,2 @@
-window.foo = ->
-  return "bar";
+window.generation = ->
+  cells: []

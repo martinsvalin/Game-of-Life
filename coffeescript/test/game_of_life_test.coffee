@@ -1,2 +1,4 @@
-test 'foo should be "bar"', ->
-  equals foo(), "bar"
+module 'Generation'
+
+test 'Generation should have a list of cells', ->
+  same generation().cells, []
