@@ -1,28 +1,34 @@
 window.Generation = (cells = [])->
   cells: cells
+  # A new generation with surviving and newborn cells
   tick: ->
     Survival.for_cells(cells)
     Reproduction.for_cells(cells)
     Generation()
 
 window.Survival =
+  # All living cells with two or three living neighbours
   for_cells: (cells)->
     _.filter cells, (cell)=>
       Neighbourhood.living(cells, cell).length in [2..3]
 
 window.Reproduction =
+  # All dead cells with exactly three living neighbours
   for_cells: (cells)->
     _(Neighbourhood.dead(cells)).filter (dead_cell)->
       Neighbourhood.living(cells, dead_cell).length == 3
 
 window.Neighbourhood =
+  # Neighbouring living cells around a center cell
   living: (living_cells, center_cell)->
     _(@around(center_cell)).filter (neighbour_cell)->
       _(living_cells).any (living_cell)->
         living_cell[0] == neighbour_cell[0] and living_cell[1] == neighbour_cell[1]
 
+  # All unique dead cells around a list of living cells
   dead: ->
 
+  # All neighbouring cells, living or dead, around a center cell
   around: (center_cell)->
     [x,y] = center_cell
     cells = []
