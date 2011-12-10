@@ -10,3 +10,4 @@ It's also an opportunity to get aquainted with new languages and test frameworks
 
 ## Implementations so far
 * [Ruby](http://www.ruby-lang.org) with [RSpec](https://www.relishapp.com/rspec) and [Cucumber](http://cukes.info) - starting off in a familiar language
+* [Coffeescript](http://coffeescript.org) with [Jasmine](http://pivotal.github.com/jasmine)
