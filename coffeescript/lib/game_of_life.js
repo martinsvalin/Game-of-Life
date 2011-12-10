@@ -37,9 +37,10 @@
     },
     dead: function(cells) {
       var all_dead;
+      var _this = this;
       if (cells.length === 0) return [];
       all_dead = _(cells).map(function(cell) {
-        return _(Neighbourhood.around(cell)).difference(cells);
+        return _(_this.around(cell)).difference(cells);
       });
       return _(all_dead).chain().flatten().uniq().sort().value();
     },
