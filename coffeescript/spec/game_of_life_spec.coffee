@@ -18,7 +18,7 @@ describe 'Generation', ->
       expect(Generation().tick()).toSerializeTo Generation()
 
     it 'should apply Survival rules', ->
-      spyOn Survival, 'for_cells'
+      spyOn(Survival, 'for_cells').andReturn []
       Generation().tick()
       expect(Survival.for_cells).toHaveBeenCalledWith([])
 
@@ -26,6 +26,10 @@ describe 'Generation', ->
       spyOn Reproduction, 'for_cells'
       Generation().tick()
       expect(Reproduction.for_cells).toHaveBeenCalledWith([])
+
+    it 'should pass on survivors and newborns to the next Generation', ->
+      gen = Generation(["1:1", "1:2", "1:3"]).tick()
+      expect(gen.cells).toEqual ["0:2", "1:2", "2:2"]
 
 describe 'Survival', ->
   describe 'for_cells', ->

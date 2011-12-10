@@ -23,14 +23,19 @@
         return expect(Generation().tick()).toSerializeTo(Generation());
       });
       it('should apply Survival rules', function() {
-        spyOn(Survival, 'for_cells');
+        spyOn(Survival, 'for_cells').andReturn([]);
         Generation().tick();
         return expect(Survival.for_cells).toHaveBeenCalledWith([]);
       });
-      return it('should apply Reproduction rules', function() {
+      it('should apply Reproduction rules', function() {
         spyOn(Reproduction, 'for_cells');
         Generation().tick();
         return expect(Reproduction.for_cells).toHaveBeenCalledWith([]);
+      });
+      return it('should pass on survivors and newborns to the next Generation', function() {
+        var gen;
+        gen = Generation(["1:1", "1:2", "1:3"]).tick();
+        return expect(gen.cells).toEqual(["0:2", "1:2", "2:2"]);
       });
     });
   });

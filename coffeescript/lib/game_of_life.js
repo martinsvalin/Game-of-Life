@@ -6,9 +6,10 @@
     return {
       cells: cells,
       tick: function() {
-        Survival.for_cells(cells);
-        Reproduction.for_cells(cells);
-        return Generation();
+        var next_gen;
+        next_gen = Survival.for_cells(cells);
+        next_gen = next_gen.concat(Reproduction.for_cells(cells));
+        return Generation(_(next_gen).sort());
       }
     };
   };
@@ -38,7 +39,6 @@
     dead: function(cells) {
       var all_dead;
       var _this = this;
-      if (cells.length === 0) return [];
       all_dead = _(cells).map(function(cell) {
         return _(_this.around(cell)).difference(cells);
       });

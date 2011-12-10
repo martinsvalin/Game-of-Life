@@ -2,9 +2,10 @@ window.Generation = (cells = [])->
   cells: cells
   # A new generation with surviving and newborn cells
   tick: ->
-    Survival.for_cells(cells)
-    Reproduction.for_cells(cells)
-    Generation()
+    next_gen = Survival.for_cells(cells)
+    next_gen = next_gen.concat Reproduction.for_cells(cells)
+    next_gen = _(next_gen).sort())
+    Generation(next_gen)
 
 window.Survival =
   # All living cells with two or three living neighbours
@@ -25,7 +26,6 @@ window.Neighbourhood =
 
   # All unique dead cells around a list of living cells
   dead: (cells)->
-    return [] if cells.length == 0
     all_dead = _(cells).map (cell)=>
       _(@around(cell)).difference cells
     _(all_dead).chain().flatten().uniq().sort().value()
