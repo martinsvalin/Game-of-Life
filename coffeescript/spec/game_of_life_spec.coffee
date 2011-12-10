@@ -22,6 +22,11 @@ describe 'Generation', ->
       Generation().tick()
       expect(Survival.for_cells).toHaveBeenCalledWith([])
 
+    it 'should apply Reproduction rules', ->
+      spyOn Reproduction, 'for_cells'
+      Generation().tick()
+      expect(Reproduction.for_cells).toHaveBeenCalledWith([])
+
 describe 'Survival', ->
   describe 'for_cells', ->
     it 'returns a list of surviving cells', ->

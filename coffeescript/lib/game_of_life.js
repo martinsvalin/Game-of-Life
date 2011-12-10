@@ -7,6 +7,7 @@
       cells: cells,
       tick: function() {
         Survival.for_cells(cells);
+        Reproduction.for_cells(cells);
         return Generation();
       }
     };
@@ -20,6 +21,10 @@
         return _ref = Neighbourhood.living(cells, cell).length, __indexOf.call([2, 3], _ref) >= 0;
       });
     }
+  };
+
+  window.Reproduction = {
+    for_cells: function() {}
   };
 
   window.Neighbourhood = {

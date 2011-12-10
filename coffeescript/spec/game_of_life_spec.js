@@ -22,10 +22,15 @@
       it('should tick to the next Generation', function() {
         return expect(Generation().tick()).toSerializeTo(Generation());
       });
-      return it('should apply Survival rules', function() {
+      it('should apply Survival rules', function() {
         spyOn(Survival, 'for_cells');
         Generation().tick();
         return expect(Survival.for_cells).toHaveBeenCalledWith([]);
+      });
+      return it('should apply Reproduction rules', function() {
+        spyOn(Reproduction, 'for_cells');
+        Generation().tick();
+        return expect(Reproduction.for_cells).toHaveBeenCalledWith([]);
       });
     });
   });
