@@ -39,7 +39,9 @@
         });
       });
     },
-    dead: function() {},
+    dead: function() {
+      return [];
+    },
     around: function(center_cell) {
       var a, b, cells, x, y, _i, _j, _len, _len2, _ref, _ref2;
       x = center_cell[0], y = center_cell[1];

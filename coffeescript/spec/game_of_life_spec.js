@@ -93,6 +93,11 @@
         return expect(Neighbourhood.living(living_cells, center_cell)).toEqual([]);
       });
     });
+    describe('dead', function() {
+      return it("is empty for no living cells", function() {
+        return expect(Neighbourhood.dead([])).toEqual([]);
+      });
+    });
     return describe('around', function() {
       return it("finds all cells around the center cell", function() {
         var expected;

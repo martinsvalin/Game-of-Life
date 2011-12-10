@@ -97,6 +97,11 @@ describe 'Neighbourhood', ->
       center_cell = _(living_cells).first()
       expect(Neighbourhood.living(living_cells, center_cell)).toEqual []
 
+  describe 'dead', ->
+    it "is empty for no living cells", ->
+      expect(Neighbourhood.dead([])).toEqual []
+
+
   describe 'around', ->
     it "finds all cells around the center cell", ->
       expected = [
