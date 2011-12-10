@@ -39,8 +39,9 @@
         });
       });
     },
-    dead: function() {
-      return [];
+    dead: function(cells) {
+      if (cells.length === 0) return [];
+      return Neighbourhood.around(cells[0]);
     },
     around: function(center_cell) {
       var a, b, cells, x, y, _i, _j, _len, _len2, _ref, _ref2;

@@ -26,7 +26,9 @@ window.Neighbourhood =
         living_cell[0] == neighbour_cell[0] and living_cell[1] == neighbour_cell[1]
 
   # All unique dead cells around a list of living cells
-  dead: -> []
+  dead: (cells)->
+    return [] if cells.length == 0
+    Neighbourhood.around(cells[0])
 
   # All neighbouring cells, living or dead, around a center cell
   around: (center_cell)->

@@ -94,8 +94,11 @@
       });
     });
     describe('dead', function() {
-      return it("is empty for no living cells", function() {
+      it("is empty for no living cells", function() {
         return expect(Neighbourhood.dead([])).toEqual([]);
+      });
+      return it("is the entire neighbourhood for a single living cell", function() {
+        return expect(Neighbourhood.dead([[0, 0]])).toEqual(Neighbourhood.around([0, 0]));
       });
     });
     return describe('around', function() {
