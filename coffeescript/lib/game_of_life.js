@@ -24,7 +24,9 @@
   };
 
   window.Reproduction = {
-    for_cells: function() {}
+    for_cells: function() {
+      return [];
+    }
   };
 
   window.Neighbourhood = {

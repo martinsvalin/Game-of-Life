@@ -11,7 +11,7 @@ window.Survival =
       Neighbourhood.living(cells, cell).length in [2..3]
 
 window.Reproduction =
-  for_cells: ->
+  for_cells: -> []
 
 window.Neighbourhood =
   living: (living_cells, center_cell)->

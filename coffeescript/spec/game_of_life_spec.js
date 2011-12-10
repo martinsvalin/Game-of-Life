@@ -58,6 +58,14 @@
     });
   });
 
+  describe('Reproduction', function() {
+    return describe('for_cells', function() {
+      return it('returns a list of newborn cells', function() {
+        return expect(Reproduction.for_cells([])).toEqual([]);
+      });
+    });
+  });
+
   describe('Neighbourhood', function() {
     describe('living', function() {
       it("doesn't include itself", function() {

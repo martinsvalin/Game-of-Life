@@ -57,6 +57,11 @@ describe 'Survival', ->
         [1,0],        [1,2],
                [2,1]]
 
+describe 'Reproduction', ->
+  describe 'for_cells', ->
+    it 'returns a list of newborn cells', ->
+      expect(Reproduction.for_cells([])).toEqual []
+
 describe 'Neighbourhood', ->
   describe 'living', ->
     it "doesn't include itself", ->
