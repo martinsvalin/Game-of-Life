@@ -40,8 +40,12 @@
       });
     },
     dead: function(cells) {
+      var all_dead;
       if (cells.length === 0) return [];
-      return Neighbourhood.around(cells[0]);
+      all_dead = _(cells).map(function(cell) {
+        return _(Neighbourhood.around(cell)).difference(cells);
+      });
+      return _(all_dead).chain().flatten().uniq().sort().value();
     },
     around: function(center_cell) {
       var a, b, cells, x, y, _i, _j, _len, _len2, _ref, _ref2, _ref3;

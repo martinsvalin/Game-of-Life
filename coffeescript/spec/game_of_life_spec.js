@@ -97,8 +97,13 @@
       it("is empty for no living cells", function() {
         return expect(Neighbourhood.dead([])).toEqual([]);
       });
-      return it("is the entire neighbourhood for a single living cell", function() {
+      it("is the entire neighbourhood for a single living cell", function() {
         return expect(Neighbourhood.dead(["0:0"])).toEqual(Neighbourhood.around("0:0"));
+      });
+      return it("has all dead neighbours, but no living neighbours", function() {
+        var expected;
+        expected = ["4:4", "4:5", "4:6", "4:7", "5:4", "5:7", "6:4", "6:5", "6:6", "6:7"];
+        return expect(Neighbourhood.dead(["5:5", "5:6"])).toEqual(expected);
       });
     });
     return describe('around', function() {

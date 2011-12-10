@@ -103,6 +103,14 @@ describe 'Neighbourhood', ->
     it "is the entire neighbourhood for a single living cell", ->
       expect(Neighbourhood.dead(["0:0"])).toEqual Neighbourhood.around("0:0")
 
+    it "has all dead neighbours, but no living neighbours", ->
+      expected = [
+        "4:4", "4:5", "4:6", "4:7",
+        "5:4",               "5:7",
+        "6:4", "6:5", "6:6", "6:7"
+      ]
+      expect(Neighbourhood.dead(["5:5", "5:6"])).toEqual expected
+
   describe 'around', ->
     it "finds all cells around the center cell", ->
       expected = [

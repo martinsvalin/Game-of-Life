@@ -28,7 +28,9 @@ window.Neighbourhood =
   # All unique dead cells around a list of living cells
   dead: (cells)->
     return [] if cells.length == 0
-    Neighbourhood.around(cells[0])
+    all_dead = _(cells).map (cell)->
+      _(Neighbourhood.around(cell)).difference cells
+    _(all_dead).chain().flatten().uniq().sort().value()
 
   # All neighbouring cells, living or dead, around a center cell
   around: (center_cell)->
