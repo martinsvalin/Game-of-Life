@@ -60,8 +60,14 @@
 
   describe('Reproduction', function() {
     return describe('for_cells', function() {
-      return it('returns a list of newborn cells', function() {
+      it('returns a list of newborn cells', function() {
         return expect(Reproduction.for_cells([])).toEqual([]);
+      });
+      return it('with a blinker (three cells) returns two newborn cells', function() {
+        var cells;
+        cells = [[0, 1], [1, 1], [2, 1]];
+        spyOn(Neighbourhood, 'dead').andReturn([[1, 0], [1, 2]]);
+        return expect(Reproduction.for_cells(cells)).toEqual([[1, 0], [1, 2]]);
       });
     });
   });

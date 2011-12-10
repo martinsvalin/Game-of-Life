@@ -24,8 +24,10 @@
   };
 
   window.Reproduction = {
-    for_cells: function() {
-      return [];
+    for_cells: function(cells) {
+      return _(Neighbourhood.dead(cells)).filter(function(dead_cell) {
+        return Neighbourhood.living(cells, dead_cell).length === 3;
+      });
     }
   };
 
@@ -37,6 +39,7 @@
         });
       });
     },
+    dead: function() {},
     around: function(center_cell) {
       var a, b, cells, x, y, _i, _j, _len, _len2, _ref, _ref2;
       x = center_cell[0], y = center_cell[1];

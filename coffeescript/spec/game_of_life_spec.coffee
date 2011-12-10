@@ -62,6 +62,14 @@ describe 'Reproduction', ->
     it 'returns a list of newborn cells', ->
       expect(Reproduction.for_cells([])).toEqual []
 
+    it 'with a blinker (three cells) returns two newborn cells', ->
+      cells = [
+        [0,1],
+        [1,1],
+        [2,1]]
+      spyOn(Neighbourhood, 'dead').andReturn [[1,0], [1,2]]
+      expect(Reproduction.for_cells(cells)).toEqual [[1,0], [1,2]]
+
 describe 'Neighbourhood', ->
   describe 'living', ->
     it "doesn't include itself", ->
