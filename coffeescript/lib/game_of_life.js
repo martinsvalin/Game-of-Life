@@ -1,3 +1,5 @@
+(function() {
+  var __hasProp = Object.prototype.hasOwnProperty, __indexOf = Array.prototype.indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (__hasProp.call(this, i) && this[i] === item) return i; } return -1; };
 
   window.Generation = function(cells) {
     if (cells == null) cells = [];
@@ -14,9 +16,8 @@
     for_cells: function(cells) {
       var _this = this;
       return _.filter(cells, function(cell) {
-        var neighbour_count;
-        neighbour_count = Neighbourhood.living(cells, cell).length;
-        return neighbour_count === 2 || neighbour_count === 3;
+        var _ref;
+        return _ref = Neighbourhood.living(cells, cell).length, __indexOf.call([2, 3], _ref) >= 0;
       });
     }
   };
@@ -45,3 +46,5 @@
       return cells;
     }
   };
+
+}).call(this);

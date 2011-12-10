@@ -7,7 +7,7 @@ window.Generation = (cells = [])->
 window.Survival =
   for_cells: (cells)->
     _.filter cells, (cell)=>
-      Neighbourhood.living(cells, cell).length in (2..3)
+      Neighbourhood.living(cells, cell).length in [2..3]
 
 window.Neighbourhood =
   living: (living_cells, center_cell)->
