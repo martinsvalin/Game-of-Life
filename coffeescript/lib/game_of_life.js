@@ -1,4 +1,5 @@
 (function() {
+  var CellConversion;
   var __hasProp = Object.prototype.hasOwnProperty, __indexOf = Array.prototype.indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (__hasProp.call(this, i) && this[i] === item) return i; } return -1; };
 
   window.Generation = function(cells) {
@@ -64,7 +65,7 @@
     }
   };
 
-  window.CellConversion = {
+  CellConversion = {
     fromString: function(cell) {
       return _(cell.split(":")).map(function(n) {
         return parseInt(n);

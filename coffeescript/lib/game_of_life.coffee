@@ -39,7 +39,7 @@ window.Neighbourhood =
         cells = cells.concat [CellConversion.toString([a,b])] unless a == x and b == y
     cells
 
-window.CellConversion =
+CellConversion =
   fromString: (cell)->
     _(cell.split(":")).map (n)-> parseInt(n)
   toString: (cell)->
