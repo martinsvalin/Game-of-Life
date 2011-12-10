@@ -4,7 +4,7 @@ window.Generation = (cells = [])->
   tick: ->
     next_gen = Survival.for_cells(cells)
     next_gen = next_gen.concat Reproduction.for_cells(cells)
-    next_gen = _(next_gen).sort())
+    next_gen = _(next_gen).sort()
     Generation(next_gen)
 
 window.Survival =

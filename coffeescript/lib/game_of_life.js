@@ -9,7 +9,8 @@
         var next_gen;
         next_gen = Survival.for_cells(cells);
         next_gen = next_gen.concat(Reproduction.for_cells(cells));
-        return Generation(_(next_gen).sort());
+        next_gen = _(next_gen).sort();
+        return Generation(next_gen);
       }
     };
   };
