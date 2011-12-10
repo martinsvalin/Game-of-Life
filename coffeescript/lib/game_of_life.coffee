@@ -23,7 +23,7 @@ window.Neighbourhood =
   living: (living_cells, center_cell)->
     _(@around(center_cell)).filter (neighbour_cell)->
       _(living_cells).any (living_cell)->
-        living_cell[0] == neighbour_cell[0] and living_cell[1] == neighbour_cell[1]
+        living_cell == neighbour_cell
 
   # All unique dead cells around a list of living cells
   dead: (cells)->
@@ -32,9 +32,15 @@ window.Neighbourhood =
 
   # All neighbouring cells, living or dead, around a center cell
   around: (center_cell)->
-    [x,y] = center_cell
+    [x,y] = CellConversion.fromString(center_cell)
     cells = []
     for a in [x-1, x, x+1]
       for b in [y-1, y, y+1]
-        cells = cells.concat [[a,b]] unless a == x and b == y
+        cells = cells.concat [CellConversion.toString([a,b])] unless a == x and b == y
     cells
+
+window.CellConversion =
+  fromString: (cell)->
+    _(cell.split(":")).map (n)-> parseInt(n)
+  toString: (cell)->
+    cell.join(":")

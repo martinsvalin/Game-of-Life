@@ -14,7 +14,7 @@
       });
       return it('with a cell at [0,0] should report its cell', function() {
         var cells;
-        cells = [[0, 0]];
+        cells = ["0:0"];
         return expect(Generation(cells).cells).toEqual(cells);
       });
     });
@@ -42,18 +42,18 @@
       });
       it('with a single cell returns no survivors', function() {
         spyOn(Neighbourhood, 'living').andReturn(0);
-        return expect(Survival.for_cells([[0, 0]])).toEqual([]);
+        return expect(Survival.for_cells(["0:0"])).toEqual([]);
       });
       it('with a block of four cells returns all cells as survivors', function() {
         var cells;
-        cells = [[0, 0], [0, 1], [1, 0], [1, 1]];
-        spyOn(Neighbourhood, 'living').andReturn([[0, 0], [0, 1], [1, 0]]);
+        cells = ["0:0", "0:1", "1:0", "1:1"];
+        spyOn(Neighbourhood, 'living').andReturn(["0:0", "0:1", "1:0"]);
         return expect(Survival.for_cells(cells)).toEqual(cells);
       });
       return it("with five cells in a cross does not return the center cell", function() {
         var cells;
-        cells = [[0, 1], [1, 0], [1, 1], [1, 2], [2, 1]];
-        return expect(Survival.for_cells(cells)).toEqual([[0, 1], [1, 0], [1, 2], [2, 1]]);
+        cells = ["0:1", "1:0", "1:1", "1:2", "2:1"];
+        return expect(Survival.for_cells(cells)).toEqual(["0:1", "1:0", "1:2", "2:1"]);
       });
     });
   });
@@ -65,9 +65,9 @@
       });
       return it('with a blinker (three cells) returns two newborn cells', function() {
         var cells;
-        cells = [[0, 1], [1, 1], [2, 1]];
-        spyOn(Neighbourhood, 'dead').andReturn([[1, 0], [1, 2]]);
-        return expect(Reproduction.for_cells(cells)).toEqual([[1, 0], [1, 2]]);
+        cells = ["0:1", "1:1", "2:1"];
+        spyOn(Neighbourhood, 'dead').andReturn(["1:0", "1:2"]);
+        return expect(Reproduction.for_cells(cells)).toEqual(["1:0", "1:2"]);
       });
     });
   });
@@ -76,19 +76,19 @@
     describe('living', function() {
       it("doesn't include itself", function() {
         var center_cell, living_cells;
-        living_cells = [[0, 0]];
+        living_cells = ["0:0"];
         center_cell = _(living_cells).first();
         return expect(Neighbourhood.living(living_cells, center_cell)).not.toContain(center_cell);
       });
       it("finds some living neighbours", function() {
         var center_cell, living_cells;
-        living_cells = [[0, 0], [0, 1], [1, 0], [1, 1]];
+        living_cells = ["0:0", "0:1", "1:0", "1:1"];
         center_cell = _(living_cells).first();
-        return expect(Neighbourhood.living(living_cells, center_cell)).toEqual([[0, 1], [1, 0], [1, 1]]);
+        return expect(Neighbourhood.living(living_cells, center_cell)).toEqual(["0:1", "1:0", "1:1"]);
       });
       return it("excludes live cells that are not neighbours", function() {
         var center_cell, living_cells;
-        living_cells = [[0, 0], [2, 2]];
+        living_cells = ["0:0", "2:2"];
         center_cell = _(living_cells).first();
         return expect(Neighbourhood.living(living_cells, center_cell)).toEqual([]);
       });
@@ -98,14 +98,14 @@
         return expect(Neighbourhood.dead([])).toEqual([]);
       });
       return it("is the entire neighbourhood for a single living cell", function() {
-        return expect(Neighbourhood.dead([[0, 0]])).toEqual(Neighbourhood.around([0, 0]));
+        return expect(Neighbourhood.dead(["0:0"])).toEqual(Neighbourhood.around("0:0"));
       });
     });
     return describe('around', function() {
       return it("finds all cells around the center cell", function() {
         var expected;
-        expected = [[4, 4], [4, 5], [4, 6], [5, 4], [5, 6], [6, 4], [6, 5], [6, 6]];
-        return expect(Neighbourhood.around([5, 5])).toEqual(expected);
+        expected = ["4:4", "4:5", "4:6", "5:4", "5:6", "6:4", "6:5", "6:6"];
+        return expect(Neighbourhood.around("5:5")).toEqual(expected);
       });
     });
   });
