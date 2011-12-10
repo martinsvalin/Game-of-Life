@@ -21,9 +21,7 @@ window.Reproduction =
 window.Neighbourhood =
   # Neighbouring living cells around a center cell
   living: (living_cells, center_cell)->
-    _(@around(center_cell)).filter (neighbour_cell)->
-      _(living_cells).any (living_cell)->
-        living_cell == neighbour_cell
+    _(@around(center_cell)).intersection living_cells
 
   # All unique dead cells around a list of living cells
   dead: (cells)->

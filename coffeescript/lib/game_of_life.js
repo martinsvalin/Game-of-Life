@@ -33,11 +33,7 @@
 
   window.Neighbourhood = {
     living: function(living_cells, center_cell) {
-      return _(this.around(center_cell)).filter(function(neighbour_cell) {
-        return _(living_cells).any(function(living_cell) {
-          return living_cell === neighbour_cell;
-        });
-      });
+      return _(this.around(center_cell)).intersection(living_cells);
     },
     dead: function(cells) {
       var all_dead;
